@@ -1,0 +1,5 @@
+name: Magica
+main: magica.plugin.Main
+version: 0.0.1
+api-version: 1.15
+author: LaRRaM inc.
