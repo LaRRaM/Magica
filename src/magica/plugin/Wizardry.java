@@ -10,10 +10,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+
 import org.bukkit.Sound;
 
 public class Wizardry implements Listener{
-	
+	private Main plugin;
+	public Wizardry (Main plugin) {this.plugin = plugin;}
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void use(PlayerInteractEvent clk) {
@@ -27,6 +29,8 @@ public class Wizardry implements Listener{
 		if(!item.getItemMeta().hasDisplayName()) return;
 		if(!item.getItemMeta().hasLore()) return;
 		clk.setCancelled(true);
+//Config
+
 //
 		String lore = item.getItemMeta().getLore().get(0);
 		Location loc = p.getLocation().add(0, 2, 0);
@@ -39,15 +43,19 @@ public class Wizardry implements Listener{
         double z = Math.cos(pitch);
 //
         Vector vector = new Vector(x, z, y);
-//wizard
+//wizardry
 		switch(lore) {
 			case ("FIREBALL"):
-				SmallFireball fireball = p.getWorld().spawn(loc, SmallFireball.class);
-				fireball.setDirection(vector.multiply(10));
-				fireball.setBounce(false);
-				fireball.setIsIncendiary(false);
-				fireball.setYield(2);
-				p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1);
+				if (p.getExp() >= 100){
+					SmallFireball fireball = p.getWorld().spawn(loc, SmallFireball.class);
+					fireball.setDirection(vector.multiply(10));
+					fireball.setBounce(false);
+					fireball.setIsIncendiary(false);
+					fireball.setYield(2);
+					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1);
+				} else {
+					p.sendMessage(plugin.getConfig().getString("messages.lowExpMsg"));
+				}
 				break;
 			default:
 				return;

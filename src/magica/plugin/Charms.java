@@ -12,6 +12,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Charms{
+	public Charms () {}
 	public void fireball() {
 		ItemStack fireball_rune = new ItemStack(Material.PAPER);
 		ItemMeta meta = fireball_rune.getItemMeta();
