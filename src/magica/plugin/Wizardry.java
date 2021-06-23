@@ -57,6 +57,7 @@ public class Wizardry implements Listener{
 					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1);
 					p.setLevel(p.getLevel() - price);
 				} else {
+					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_DEATH, 10, 1);
 					p.sendMessage(plugin.getConfig().getString("messages.lowExpMsg"));
 				}
 				break;

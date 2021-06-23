@@ -27,10 +27,11 @@ public class Charms{
 		fireball_rune.setItemMeta(meta);
 		@SuppressWarnings("deprecation")
 		ShapedRecipe recipe = new ShapedRecipe(fireball_rune);
+//recipe
 		recipe.shape(new String[] {"A B","   ","   "});
 		recipe.setIngredient('A', Material.PAPER);
 		recipe.setIngredient('B', Material.BLAZE_POWDER);
-		
+//
 		Bukkit.getServer().addRecipe(recipe);
 	}
 	public void darkArrow() {

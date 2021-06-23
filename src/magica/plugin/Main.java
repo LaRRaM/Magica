@@ -17,5 +17,6 @@ public class Main extends JavaPlugin implements Listener{
 			getConfig().options().copyDefaults(true);
 			saveDefaultConfig();
 		}
+
 	}
 }
