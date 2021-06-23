@@ -10,6 +10,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+import org.bukkit.Sound;
 
 public class Wizardry implements Listener{
 	
@@ -46,6 +47,7 @@ public class Wizardry implements Listener{
 				fireball.setBounce(false);
 				fireball.setIsIncendiary(false);
 				fireball.setYield(2);
+				p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1);
 				break;
 			default:
 				return;
