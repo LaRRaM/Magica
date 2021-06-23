@@ -39,7 +39,7 @@ public class Wizardry implements Listener{
         double z = Math.cos(pitch);
 //
         Vector vector = new Vector(x, z, y);
-//
+//wizard
 		switch(lore) {
 			case ("FIREBALL"):
 				SmallFireball fireball = p.getWorld().spawn(loc, SmallFireball.class);
