@@ -43,16 +43,19 @@ public class Wizardry implements Listener{
         double z = Math.cos(pitch);
 //
         Vector vector = new Vector(x, z, y);
+//
+        int price = 10;
 //wizardry
 		switch(lore) {
 			case ("FIREBALL"):
-				if (p.getExp() >= 100){
+				if (p.getLevel() >= price){
 					SmallFireball fireball = p.getWorld().spawn(loc, SmallFireball.class);
 					fireball.setDirection(vector.multiply(10));
 					fireball.setBounce(false);
 					fireball.setIsIncendiary(false);
 					fireball.setYield(2);
 					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1);
+					p.setLevel(p.getLevel() - price);
 				} else {
 					p.sendMessage(plugin.getConfig().getString("messages.lowExpMsg"));
 				}
