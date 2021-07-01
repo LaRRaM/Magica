@@ -11,6 +11,7 @@ public class Main extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(new Wizardry(this), this);
 		Charms charms = new Charms();
 		charms.fireball();
+		charms.deathArea();
 		File config = new File(getDataFolder() + File.separator + "config.yml");
 //Files is exist
 		if (!config.exists()){

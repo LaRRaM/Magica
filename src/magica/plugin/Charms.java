@@ -20,7 +20,6 @@ public class Charms{
 		List<String> lore = new ArrayList<String>();
 		lore.add("FIREBALL");
 	
-		meta.setDisplayName("FIREBALL");
 		meta.setLore(lore);
 		meta.addEnchant(Enchantment.SILK_TOUCH, 3, true);
 		
@@ -34,6 +33,7 @@ public class Charms{
 //
 		Bukkit.getServer().addRecipe(recipe);
 	}
+//
 	public void darkArrow() {
 		ItemStack item = new ItemStack(Material.PAPER);
 		ItemMeta meta = item.getItemMeta();
@@ -41,5 +41,25 @@ public class Charms{
 		List<String> lore = new ArrayList<String>();
 		lore.add("DARKARROW");
 		
+	}
+//
+	public void deathArea() {
+		ItemStack deatharea_rune = new ItemStack(Material.PAPER);
+		ItemMeta meta = deatharea_rune.getItemMeta();
+		meta.setDisplayName(ChatColor.BLACK + "Death area");
+		List<String> lore = new ArrayList<String>();
+		lore.add("DEATH AREA");
+		meta.setLore(lore);
+		meta.addEnchant(Enchantment.SILK_TOUCH, 3, true);
+		
+		deatharea_rune.setItemMeta(meta);
+		@SuppressWarnings("deprecation")
+		ShapedRecipe recipe = new ShapedRecipe(deatharea_rune);
+//recipe
+		recipe.shape(new String[] {"A B","   ","   "});
+		recipe.setIngredient('A', Material.PAPER);
+		recipe.setIngredient('B', Material.WITHER_SKELETON_SKULL);
+//
+		Bukkit.getServer().addRecipe(recipe);
 	}
 }

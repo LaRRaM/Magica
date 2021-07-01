@@ -1,7 +1,11 @@
 package magica.plugin;
 
+import java.util.Collection;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.SmallFireball;
 import org.bukkit.event.EventHandler;
@@ -10,6 +14,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+
 
 import org.bukkit.Sound;
 
@@ -44,7 +49,7 @@ public class Wizardry implements Listener{
 //
         Vector vector = new Vector(x, z, y);
 //
-        int price = 10;
+        int price = Integer.parseInt(plugin.getConfig().getString("price"));
 //wizardry
 		switch(lore) {
 			case ("FIREBALL"):
@@ -61,11 +66,26 @@ public class Wizardry implements Listener{
 					p.sendMessage(plugin.getConfig().getString("messages.lowExpMsg"));
 				}
 				break;
+			case ("DEATH AREA"):
+				if (p.getLevel() >= price){
+					Collection<Entity> e = p.getWorld().getNearbyEntities(p.getLocation(), 8, 8, 8);
+					
+//					for (int i = 0; i < e.size(); i++) {
+//						e.toArray()[i].damage(100);
+//					}
+					for (Entity mob : e) {
+						((Damageable)mob).damage(100);
+					}
+					p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_IMPACT, 10, 1);
+					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_HURT, 10, 1);
+					p.setLevel(p.getLevel() + price + 5);
+				} else {
+					p.playSound(p.getLocation(), Sound.ENTITY_GHAST_DEATH, 10, 1);
+					p.sendMessage(plugin.getConfig().getString("messages.lowExpMsg"));
+				}
+				break;
 			default:
 				return;
-		}
-		
-		
-		
+		}		
 	}
 }
