@@ -69,10 +69,7 @@ public class Wizardry implements Listener{
 			case ("DEATH AREA"):
 				if (p.getLevel() >= price){
 					Collection<Entity> e = p.getWorld().getNearbyEntities(p.getLocation(), 8, 8, 8);
-					
-//					for (int i = 0; i < e.size(); i++) {
-//						e.toArray()[i].damage(100);
-//					}
+
 					for (Entity mob : e) {
 						if(mob != p) {
 							((Damageable)mob).damage(100);
