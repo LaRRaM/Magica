@@ -72,7 +72,7 @@ public class Wizardry implements Listener{
 
 					for (Entity mob : e) {
 						if(mob != p) {
-							((Damageable)mob).damage(100);
+							((Damageable)mob).damage(100); // ERROR! Why?
 						}
 					}
 					p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_IMPACT, 10, 1);
